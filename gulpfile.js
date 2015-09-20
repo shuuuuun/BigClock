@@ -34,7 +34,7 @@ gulp.task('server',function(){
     .pipe(webserver({
       // directoryListing: true,
       host: '0.0.0.0',
-      port: 619969,
+      port: 9609,
     })
   );
 });

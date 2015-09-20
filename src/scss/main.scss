@@ -4,7 +4,7 @@
 @import "mixin";
 
 // variable ------------------------------
-$MAIN_FONT: YuGothic, '游ゴシック', "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic Pro", Meiryo, "メイリオ", Helvetica, Arial, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+$MAIN_FONT: "San Francisco", Futura, YuGothic, '游ゴシック', "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic Pro", Meiryo, "メイリオ", Helvetica, Arial, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 
 // ------------------------------
 .onlysp {
@@ -15,8 +15,13 @@ $MAIN_FONT: YuGothic, '游ゴシック', "ヒラギノ角ゴPro W3", "Hiragino K
 }
 
 // ------------------------------
+html, body {
+  height: 100%;
+}
 body {
   font-family: $MAIN_FONT;
+  background-color: #000;
+  color: #fff;
 }
 body * {
   box-sizing: border-box;
@@ -24,5 +29,21 @@ body * {
 
 // ------------------------------
 .wrapper {
-  min-width: 1024px;
+  height: 100%;
+  position: relative;
+}
+
+.clock {
+  text-align: center;
+  font-size: 380px;
+  height: 380px;
+  @include absolute-center();
+}
+
+.date {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+  font-size: 30px;
 }

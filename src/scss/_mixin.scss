@@ -1,32 +1,6 @@
 // MIXIN
 @import "compass";
 
-// animation --------------------------------------------------
-
-
-// fallback --------------------------------------------------
-@mixin font-size($value) {
-    font-size: $value;
-
-    html.half_zoom & {
-        font-size: $value * 0.5;
-    }
-}
-@mixin inline-block {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-}
-@mixin opacity($value) {
-    opacity: $value;
-    filter: alpha(opacity=$value * 100);
-    *zoom: 1;
-}
-@mixin textIndent {
-    text-indent: -9999px;
-    overflow: hidden;
-}
-
 // custom --------------------------------------------------
 @mixin absolute($top,$right,$bottom,$left) {
     position: absolute;
@@ -95,7 +69,8 @@
         margin: 0 auto;
     }
     @if $textIndent {
-        @include textIndent();
+        text-indent: -9999px;
+        overflow: hidden;
     }
     display: block;
     background: image-url($url);
@@ -109,13 +84,15 @@
     $width: image-width($url);
     $height: image-height($url);
 
-    @include textIndent();
+    text-indent: -9999px;
+    overflow: hidden;
     width: $width;
     height: $height;
 
     a {
         display: block;
-        @include textIndent();
+        text-indent: -9999px;
+        overflow: hidden;
         background: image-url($url);
         background-repeat: no-repeat;
         background-position: center top;
@@ -151,7 +128,8 @@
         margin: 0 auto;
     }
     @if $textIndent {
-        @include textIndent();
+        text-indent: -9999px;
+        overflow: hidden;
     }
     display: block;
     background: image-url($url);
@@ -165,13 +143,15 @@
     $width: image-width($url) / 2;
     $height: ceil(image-height($url) / 2);
 
-    @include textIndent();
+    text-indent: -9999px;
+    overflow: hidden;
     width: $width;
     height: $height;
 
     a {
         display: block;
-        @include textIndent();
+        text-indent: -9999px;
+        overflow: hidden;
         background: image-url($url);
         background-repeat: no-repeat;
         background-position: center top;
@@ -211,30 +191,3 @@
         -#{$prefix}-#{$prop}: $value;
     }
 }
-
-// @mixin animation($name, $duration, $timing, $delay, $count, $direction: null) {
-//     $prefixes: ("-webkit-", "-moz-", null);
-//     @each $prefix in $prefixes {
-//         #{$prefix}#{animation}: $name $duration $timing $delay $count $direction;
-//     }
-// }
-// @mixin keyframes($name){
-//     @-webkit-keyframes #{$name} {
-//         @content;
-//     }
-//     @-moz-keyframes #{$name} {
-//         @content;
-//     }
-//     @keyframes #{$name} {
-//         @content;
-//     }
-// }
-// @mixin sprite-keyframes($anim-name, $h, $n) {
-//     @include keyframes($anim-name) {
-//         @for $i from 0 through $n {
-//             #{(100% / $n * $i)} {
-//                 background-position: 0 (- $h / $n * $i);
-//             }
-//         }
-//     }
-// }

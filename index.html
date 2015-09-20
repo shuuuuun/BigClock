@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>hoge</title>
+    <meta name="description" content="meta description">
+    <meta name="keywords" content="hoge, fuga">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="./js/App.js"></script>
+    <script src="./js/Util.js"></script>
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+    <script>
+      (function(win, doc, ns){
+        var ua = win.navigator.userAgent.toLowerCase();
+        ns.ua = {};
+        ns.ua.isSP = /ipod|iphone|ipad|android/i.test(ua);
+        ns.ua.isAndroid = /android/.test(ua);
+        ns.ua.isPC = !ns.ua.isSP;
+        ns.ua.isIE8 = /msie 8/.test(ua);
+        ns.ua.isIE9 = /msie 9/.test(ua);
+        if ( ns.ua.isSP ) doc.body.className += " isSP";
+      })(window, document, App);
+      
+    </script>
+    <div class="wrapper">
+      <p class="clock"></p>
+      <p class="date"></p>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 (function(win, doc, ns){
   
+  var INTERVAL = 500;
   var $clock, $date;
   var dayChara = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   
@@ -9,7 +10,7 @@
     
     setInterval(function(){
       printTime();
-    }, 100);
+    }, INTERVAL);
     
     printTime();
     printDate();
@@ -21,7 +22,7 @@
     var hour = ("0" + now.getHours()).slice(-2);
     var min = ("0" + now.getMinutes()).slice(-2);
     var sec = ("0" + now.getSeconds()).slice(-2);
-    $clock.text(hour+":"+min+":"+sec);
+    $clock.innerText = hour+":"+min+":"+sec;
     
     if (hour === "00") printDate();
   }
@@ -32,7 +33,7 @@
     var month = ("0" + (now.getMonth()+1)).slice(-2);
     var date = ("0" + now.getDate()).slice(-2);
     var day = now.getDay();
-    $date.text(year+"."+month+"."+date+" "+dayChara[day]);
+    $date.innerText = year+"."+month+"."+date+" "+dayChara[day];
   }
   
 })(this, document, App);

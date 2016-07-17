@@ -49,3 +49,55 @@ body * {
   padding: 5px;
   font-size: 30px;
 }
+
+.analog {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: solid 4px #fff;
+  position: relative;
+  text-align: center;
+}
+
+.num {
+  $center: 100;
+  $radius: 80;
+  position: absolute;
+  transform: translate(-75%, -75%);
+  
+  @for $i from 1 through 12 {
+    $radian: $i * pi() / 6;
+    $x: $center + $radius * sin($radian);
+    $y: $center - $radius * cos($radian);
+    &:nth-child(#{$i}) {
+      top: #{$y}px;
+      left: #{$x}px;
+    }
+  }
+}
+
+%hand {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  margin: auto;
+  background-color: #fff;
+  transform-origin: bottom;
+}
+.hand-hour {
+  @extend %hand;
+  width: 5px;
+  height: 30%;
+}
+.hand-min {
+  @extend %hand;
+  width: 3px;
+  height: 40%;
+}
+.hand-sec {
+  @extend %hand;
+  width: 2px;
+  height: 45%;
+}

@@ -37,6 +37,8 @@ body * {
   text-align: center;
   font-size: 380px;
   height: 380px;
+  font-size: 22vw;
+  height: 22vw;
   @include absolute-center();
 }
 

@@ -2,8 +2,9 @@
   
   var INTERVAL = 500;
   var $clock, $analog, $date;
-  var $handHour, $handMin, $handSec;
+  var hands = [];
   var dayChara = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  var handClassList = ["hand-hour", "hand-min", "hand-sec"];
   
   window.onload = function(){
     $clock = document.querySelector(".clock");
@@ -42,21 +43,20 @@
   }
   
   function setupAnalog(){
-    $handHour = document.createElement('span');
-    $handMin = document.createElement('span');
-    $handSec = document.createElement('span');
-    $handHour.classList.add('hand-hour');
-    $handMin.classList.add('hand-min');
-    $handSec.classList.add('hand-sec');
+    var fragment = document.createDocumentFragment();
     for (var i = 0; i < 12; i++) {
-      var $num = document.createElement('span');
-      $num.classList.add('num');
+      var $num = document.createElement("span");
+      $num.classList.add("num");
       $num.innerText = i + 1;
-      $analog.appendChild($num);
+      fragment.appendChild($num);
     }
-    $analog.appendChild($handHour);
-    $analog.appendChild($handMin);
-    $analog.appendChild($handSec);
+    for (var i = 0; i < 3; i++) {
+      var $hand = document.createElement("span");
+      $hand.classList.add(handClassList[i]);
+      hands.push($hand);
+      fragment.appendChild($hand);
+    }
+    $analog.appendChild(fragment);
   }
   
   function printAnalog(){
@@ -64,9 +64,9 @@
     var hour = now.getHours();
     var min = now.getMinutes();
     var sec = now.getSeconds();
-    $handHour.style.transform = 'rotate(' + (hour / 12 * 360) + 'deg)';
-    $handMin.style.transform = 'rotate(' + (min / 60 * 360) + 'deg)';
-    $handSec.style.transform = 'rotate(' + (sec / 60 * 360) + 'deg)';
+    hands[0].style.transform = "rotate(" + (hour / 12 * 360) + "deg)";
+    hands[1].style.transform = "rotate(" + (min / 60 * 360) + "deg)";
+    hands[2].style.transform = "rotate(" + (sec / 60 * 360) + "deg)";
   }
   
 })(this, document, App);

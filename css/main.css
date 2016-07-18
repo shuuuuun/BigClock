@@ -71,6 +71,7 @@ body {
   font-family: "San Francisco", Futura, YuGothic, "游ゴシック", "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic Pro", Meiryo, "メイリオ", Helvetica, Arial, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   background-color: #000;
   color: #fff;
+  -webkit-user-select: none;
 }
 
 body * {
@@ -94,6 +95,10 @@ body * {
   bottom: 0;
   left: 0;
   right: 0;
+  transition: opacity 1s;
+}
+.clock.hide {
+  opacity: 0;
 }
 
 .date {
@@ -102,4 +107,103 @@ body * {
   bottom: 0;
   padding: 5px;
   font-size: 30px;
+}
+
+.analog {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: solid 4px #fff;
+  text-align: center;
+  font-size: 30px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: scale(4);
+  transition: opacity 1s;
+}
+.analog.hide {
+  opacity: 0;
+}
+
+.num {
+  position: absolute;
+  transform: translate(-65%, -65%);
+}
+.num:nth-child(1) {
+  top: 30.71797px;
+  left: 140px;
+}
+.num:nth-child(2) {
+  top: 60.0px;
+  left: 169.28203px;
+}
+.num:nth-child(3) {
+  top: 100px;
+  left: 180px;
+}
+.num:nth-child(4) {
+  top: 140px;
+  left: 169.28203px;
+}
+.num:nth-child(5) {
+  top: 169.28203px;
+  left: 140px;
+}
+.num:nth-child(6) {
+  top: 180px;
+  left: 100px;
+}
+.num:nth-child(7) {
+  top: 169.28203px;
+  left: 60px;
+}
+.num:nth-child(8) {
+  top: 140px;
+  left: 30.71797px;
+}
+.num:nth-child(9) {
+  top: 100px;
+  left: 20px;
+}
+.num:nth-child(10) {
+  top: 60px;
+  left: 30.71797px;
+}
+.num:nth-child(11) {
+  top: 30.71797px;
+  left: 60.0px;
+}
+.num:nth-child(12) {
+  top: 20px;
+  left: 100.0px;
+}
+
+.hand-hour, .hand-min, .hand-sec {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  margin: auto;
+  background-color: #fff;
+  transform-origin: bottom;
+}
+
+.hand-hour {
+  width: 5px;
+  height: 30%;
+}
+
+.hand-min {
+  width: 3px;
+  height: 40%;
+}
+
+.hand-sec {
+  width: 2px;
+  height: 45%;
 }

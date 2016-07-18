@@ -1,30 +1,32 @@
 (function(win, doc, ns){
   
   var INTERVAL = 500;
+  var DAY_CHARA = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  var HAND_CLASSLIST = ["hand-hour", "hand-min", "hand-sec"];
   var $clock, $analog, $date;
   var hands = [];
-  var dayChara = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-  var handClassList = ["hand-hour", "hand-min", "hand-sec"];
   
   window.onload = function(){
     $clock = document.querySelector(".clock");
     $analog = document.querySelector(".analog");
     $date = document.querySelector(".date");
     
-    setInterval(function(){
-      printTime();
-      printAnalog();
-    }, INTERVAL);
-    
     setupAnalog();
     
-    printTime();
-    printDate();
+    setInterval(function(){
+      var now = new Date();
+      printTime(now);
+      printAnalog(now);
+    }, INTERVAL);
     
+    var now = new Date();
+    printTime(now);
+    printAnalog(now);
+    printDate(now);
   };
   
-  function printTime(){
-    var now = new Date();
+  function printTime(now){
+    now = now || new Date();
     var hour = ("0" + now.getHours()).slice(-2);
     var min = ("0" + now.getMinutes()).slice(-2);
     var sec = ("0" + now.getSeconds()).slice(-2);
@@ -33,13 +35,13 @@
     if (hour === "00") printDate();
   }
   
-  function printDate(){
-    var now = new Date();
+  function printDate(now){
+    now = now || new Date();
     var year = now.getFullYear();
     var month = ("0" + (now.getMonth()+1)).slice(-2);
     var date = ("0" + now.getDate()).slice(-2);
     var day = now.getDay();
-    $date.innerText = year+"."+month+"."+date+" "+dayChara[day];
+    $date.innerText = year+"."+month+"."+date+" "+DAY_CHARA[day];
   }
   
   function setupAnalog(){
@@ -52,15 +54,15 @@
     }
     for (var i = 0; i < 3; i++) {
       var $hand = document.createElement("span");
-      $hand.classList.add(handClassList[i]);
+      $hand.classList.add(HAND_CLASSLIST[i]);
       hands.push($hand);
       fragment.appendChild($hand);
     }
     $analog.appendChild(fragment);
   }
   
-  function printAnalog(){
-    var now = new Date();
+  function printAnalog(now){
+    now = now || new Date();
     var hour = now.getHours();
     var min = now.getMinutes();
     var sec = now.getSeconds();

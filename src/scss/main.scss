@@ -41,6 +41,11 @@ body * {
   font-size: 22vw;
   height: 22vw;
   @include absolute-center();
+  transition: opacity 1s;
+  
+  &.hide {
+    opacity: 0;
+  }
 }
 
 .date {
@@ -60,6 +65,11 @@ body * {
   font-size: 30px;
   @include absolute-center();
   transform: scale(4);
+  transition: opacity 1s;
+  
+  &.hide {
+    opacity: 0;
+  }
 }
 
 .num {

@@ -25,6 +25,11 @@
     printDate(now);
   };
   
+  window.onclick = function(){
+    $clock.classList.toggle('hide');
+    $analog.classList.toggle('hide');
+  };
+  
   function printTime(now){
     now = now || new Date();
     var hour = ("0" + now.getHours()).slice(-2);

@@ -71,7 +71,7 @@
     var hour = now.getHours();
     var min = now.getMinutes();
     var sec = now.getSeconds();
-    hands[0].style.transform = "rotate(" + (hour / 12 * 360) + "deg)";
+    hands[0].style.transform = "rotate(" + ((hour + min / 60) / 12 * 360) + "deg)";
     hands[1].style.transform = "rotate(" + (min / 60 * 360) + "deg)";
     hands[2].style.transform = "rotate(" + (sec / 60 * 360) + "deg)";
   }
